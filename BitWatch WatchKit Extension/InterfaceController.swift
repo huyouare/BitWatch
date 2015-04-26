@@ -8,21 +8,26 @@
 
 import WatchKit
 import Foundation
-
+import BitWatchKit
 
 class InterfaceController: WKInterfaceController {
   
   @IBOutlet var priceLabel: WKInterfaceLabel!
   
+  let tracker = Tracker()
+  var updating = false
+  
   override func awakeWithContext(context: AnyObject?) {
     super.awakeWithContext(context)
     
     // Configure interface objects here.
+    updatePrice(tracker.cachedPrice())
   }
   
   override func willActivate() {
     // This method is called when watch view controller is about to be visible to user
     super.willActivate()
+    update()
   }
   
   override func didDeactivate() {
@@ -30,7 +35,25 @@ class InterfaceController: WKInterfaceController {
     super.didDeactivate()
   }
   
+  private func updatePrice(price: NSNumber) {
+    priceLabel.setText(Tracker.priceFormatter.stringFromNumber(price))
+  }
+  
+  private func update() {
+    if !updating {
+      updating = true
+      let originalPrice = tracker.cachedPrice()
+      tracker.requestPrice { (price, error) -> () in
+        if error == nil {
+          self.updatePrice(price!)
+        }
+        self.updating = false
+      }
+    }
+  }
+  
   @IBAction func refreshTapped() {
+    update()
   }
   
 }
