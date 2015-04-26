@@ -13,6 +13,8 @@ import BitWatchKit
 class InterfaceController: WKInterfaceController {
   
   @IBOutlet var priceLabel: WKInterfaceLabel!
+  @IBOutlet var image: WKInterfaceImage!
+  @IBOutlet var lastUpdatedLabel: WKInterfaceLabel!
   
   let tracker = Tracker()
   var updating = false
