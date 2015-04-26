@@ -23,6 +23,7 @@ class InterfaceController: WKInterfaceController {
     super.awakeWithContext(context)
     
     // Configure interface objects here.
+    image.setHidden(true)
     updatePrice(tracker.cachedPrice())
   }
   
@@ -41,6 +42,23 @@ class InterfaceController: WKInterfaceController {
     priceLabel.setText(Tracker.priceFormatter.stringFromNumber(price))
   }
   
+  private func updateDate(date: NSDate) {
+    self.lastUpdatedLabel.setText("Last updated \(Tracker.dateFormatter.stringFromDate(date))")
+  }
+  
+  private func updateImage(originalPrice: NSNumber, newPrice: NSNumber) {
+    if originalPrice.isEqualToNumber(newPrice) {
+      image.setHidden(true)
+    } else {
+      if newPrice.doubleValue > originalPrice.doubleValue {
+        image.setImageNamed("Up")
+      } else {
+        image.setImageNamed("Down")
+      }
+      image.setHidden(false)
+    }
+  }
+  
   private func update() {
     if !updating {
       updating = true
@@ -48,6 +66,8 @@ class InterfaceController: WKInterfaceController {
       tracker.requestPrice { (price, error) -> () in
         if error == nil {
           self.updatePrice(price!)
+          self.updateDate(NSDate())
+          self.updateImage(originalPrice, newPrice: price!)
         }
         self.updating = false
       }
