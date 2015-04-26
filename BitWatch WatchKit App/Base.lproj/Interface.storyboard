@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="6221" systemVersion="13E28" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6213"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="BitWatch_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <label alignment="center" text="$0.00" textAlignment="center" id="1h4-PH-udT">
+                            <fontDescription key="font" type="system" weight="semibold" pointSize="39"/>
+                        </label>
+                        <button width="1" alignment="center" verticalAlignment="bottom" title="Refresh" id="p0T-92-wfF">
+                            <fontDescription key="font" type="system" weight="medium" pointSize="16"/>
+                            <connections>
+                                <action selector="refreshTapped" destination="AgC-eL-Hgc" id="3gw-Pn-9gR"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="priceLabel" destination="1h4-PH-udT" id="tgz-pt-cdL"/>
+                    </connections>
+                </controller>
             </objects>
         </scene>
     </scenes>
