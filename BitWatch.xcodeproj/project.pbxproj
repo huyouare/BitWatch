@@ -22,6 +22,7 @@
 		83C969D41AEC74890033DB27 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83C969D21AEC74890033DB27 /* Interface.storyboard */; };
 		83C969D61AEC74890033DB27 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83C969D51AEC74890033DB27 /* Images.xcassets */; };
 		83C969D91AEC74890033DB27 /* BitWatch WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 83C969C11AEC74890033DB27 /* BitWatch WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		83C969E01AEC78290033DB27 /* BitWatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B876BB31A1CA05900A76FAF /* BitWatchKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83C969E01AEC78290033DB27 /* BitWatchKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
